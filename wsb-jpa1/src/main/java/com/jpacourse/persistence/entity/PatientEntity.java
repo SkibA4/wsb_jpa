@@ -38,7 +38,7 @@ public class PatientEntity {
     private AddressEntity address;
 
     // Relacja dwustronna z encją Visit
-    @OneToMany(mappedBy = "patient", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL)
     private List<VisitEntity> visits;
 
     @Column(nullable = false)

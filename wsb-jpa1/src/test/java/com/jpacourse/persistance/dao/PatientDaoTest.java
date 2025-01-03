@@ -24,22 +24,18 @@ public class PatientDaoTest {
     @Test
     @Transactional
     public void shouldCreateVisitForPatient() {
-        // Given
         Long patientId = 1L; // Jane Doe
         Long doctorId = 1L;  // John Doe
         LocalDateTime visitDate = LocalDateTime.of(2024, 12, 10, 14, 0);
         String visitDescription = "Post-surgery checkup";
 
-        // When
         patientDao.createVisitForPatient(patientId, doctorId, visitDate, visitDescription);
 
-        // Then
         PatientEntity patient = patientDao.findOne(patientId);
         assertThat(patient).isNotNull();
         assertThat(patient.getVisits()).isNotNull();
         assertThat(patient.getVisits().size()).isEqualTo(2);
 
-        // Sprawdzamy szczegóły dodanej wizyty
         VisitEntity newVisit = patient.getVisits().stream()
                 .filter(v -> v.getDescription().equals(visitDescription))
                 .findFirst()
