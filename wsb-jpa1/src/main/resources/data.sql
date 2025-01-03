@@ -6,13 +6,13 @@ VALUES
 
 INSERT INTO doctor (id, first_name, last_name, telephone_number, email, doctor_number, specialization, address_id)
 VALUES
-(1, 'John', 'Doe', '123456789', 'john.doe@example.com', 'DOC001', 'Cardiologist', 1),
-(2, 'Mary', 'Smith', '987654321', 'mary.smith@example.com', 'DOC002', 'Neurologist', 2);
+(1, 'John', 'Doe', '123456789', 'john.doe@example.com', 'DOC001', 'SURGEON', 1),
+(2, 'Mary', 'Smith', '987654321', 'mary.smith@example.com', 'DOC002', 'OCULIST', 2);
 
-INSERT INTO patient (id, first_name, last_name, telephone_number, email, patient_number, date_of_birth, address_id)
+INSERT INTO patient (id, first_name, last_name, telephone_number, email, patient_number, date_of_birth, address_id, gender)
 VALUES
-(1, 'Jane', 'Doe', '456789123', 'jane.doe@example.com', 'PAT001', '1985-06-15', 1),
-(2, 'Michael', 'Johnson', '654321987', 'michael.johnson@example.com', 'PAT002', '1990-08-20', 2);
+(1, 'Jane', 'Doe', '456789123', 'jane.doe@example.com', 'PAT001', '1985-06-15', 1, 'FEMALE'),
+(2, 'Michael', 'Johnson', '654321987', 'michael.johnson@example.com', 'PAT002', '1990-08-20', 2, 'MALE');
 
 INSERT INTO visit (id, description, time, doctor_id, patient_id)
 VALUES
@@ -21,5 +21,5 @@ VALUES
 
 INSERT INTO medical_treatment (id, description, type, visit_id)
 VALUES
-(1, 'Blood pressure check', 'Test', 1),
-(2, 'MRI scan', 'Procedure', 2);
+(1, 'Blood pressure check', 'RTG', 1),
+(2, 'MRI scan', 'USG', 2);

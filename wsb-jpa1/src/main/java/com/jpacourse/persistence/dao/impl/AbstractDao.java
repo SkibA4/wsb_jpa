@@ -13,7 +13,6 @@ import javax.persistence.criteria.CriteriaQuery;
 import com.jpacourse.persistence.dao.Dao;
 import org.springframework.transaction.annotation.Transactional;
 
-
 @Transactional
 public abstract class AbstractDao<T, K extends Serializable> implements Dao<T, K> {
 

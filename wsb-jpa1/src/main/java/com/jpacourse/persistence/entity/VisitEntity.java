@@ -2,7 +2,6 @@ package com.jpacourse.persistence.entity;
 
 import java.time.LocalDateTime;
 import java.util.List;
-
 import javax.persistence.*;
 
 @Entity
@@ -19,7 +18,6 @@ public class VisitEntity {
 	private LocalDateTime time;
 
 	// Relacja jednostronna z encją Doctor od strony rodzica (wizyta przechowuje klucz obcy)
-	// Wizyta ma informacje o doktorze, gdzie doktor nie ma informacji o wizycie
 	@ManyToOne
 	@JoinColumn(name = "doctor_id", nullable = false)
 	private DoctorEntity doctor;
@@ -33,6 +31,7 @@ public class VisitEntity {
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "visit")
 	private List<MedicalTreatmentEntity> medicalTreatment;
 
+	// Gettery i Settery
 	public Long getId() {
 		return id;
 	}
@@ -57,4 +56,27 @@ public class VisitEntity {
 		this.time = time;
 	}
 
+	public DoctorEntity getDoctor() {
+		return doctor;
+	}
+
+	public void setDoctor(DoctorEntity doctor) {
+		this.doctor = doctor;
+	}
+
+	public PatientEntity getPatient() {
+		return patient;
+	}
+
+	public void setPatient(PatientEntity patient) {
+		this.patient = patient;
+	}
+
+	public List<MedicalTreatmentEntity> getMedicalTreatment() {
+		return medicalTreatment;
+	}
+
+	public void setMedicalTreatment(List<MedicalTreatmentEntity> medicalTreatment) {
+		this.medicalTreatment = medicalTreatment;
+	}
 }
