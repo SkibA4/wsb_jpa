@@ -1,40 +1,16 @@
-package com.jpacourse.persistence.entity;
+package com.jpacourse.dto;
 
 import com.jpacourse.persistence.enums.Specialization;
 
-import javax.persistence.*;
-import java.util.List;
-
-@Entity
-@Table(name = "DOCTOR")
-public class DoctorEntity {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class DoctorTO {
     private Long id;
-
-    @Column(nullable = false)
     private String firstName;
-
-    @Column(nullable = false)
     private String lastName;
-
-    @Column(nullable = false)
     private String telephoneNumber;
-
     private String email;
-
-    @Column(nullable = false)
     private String doctorNumber;
-
-    @Column(nullable = false)
-    @Enumerated(EnumType.STRING)
     private Specialization specialization;
-
-    // Relacja dwustronna z encją Address
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "address_id", referencedColumnName = "id", nullable = false)
-    private AddressEntity address;
+    private AddressTO address;
 
     public Long getId() {
         return id;
@@ -92,12 +68,11 @@ public class DoctorEntity {
         this.specialization = specialization;
     }
 
-    public AddressEntity getAddress() {
-        return this.address;
+    public AddressTO getAddress() {
+        return address;
     }
 
-    public void setAddress(AddressEntity address) {
+    public void setAddress(AddressTO address) {
         this.address = address;
     }
-
 }
