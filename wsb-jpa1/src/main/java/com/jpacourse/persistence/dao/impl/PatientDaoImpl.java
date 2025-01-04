@@ -36,8 +36,5 @@ public class PatientDaoImpl extends AbstractDao<PatientEntity, Long> implements 
         visit.setPatient(patient);
 
         patient.getVisits().add(visit);
-        System.out.println(patient.getVisits());
-        var saved = save(patient);
-        System.out.println(saved.getVisits());
     }
 }

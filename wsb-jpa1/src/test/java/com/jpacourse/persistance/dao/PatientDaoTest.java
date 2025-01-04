@@ -24,8 +24,8 @@ public class PatientDaoTest {
     @Test
     @Transactional
     public void shouldCreateVisitForPatient() {
-        Long patientId = 1L; // Jane Doe
-        Long doctorId = 1L;  // John Doe
+        Long patientId = 1L;
+        Long doctorId = 1L;
         LocalDateTime visitDate = LocalDateTime.of(2024, 12, 10, 14, 0);
         String visitDescription = "Post-surgery checkup";
 

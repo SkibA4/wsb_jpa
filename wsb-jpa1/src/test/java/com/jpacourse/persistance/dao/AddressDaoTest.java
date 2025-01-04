@@ -29,6 +29,7 @@ public class AddressDaoTest
         assertThat(addressEntity.getPostalCode()).isEqualTo("00-001");
     }
 
+    @Transactional
     @Test
     public void testShouldSaveAddress() {
         // given
