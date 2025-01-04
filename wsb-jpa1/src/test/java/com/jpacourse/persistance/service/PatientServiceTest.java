@@ -13,6 +13,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -35,6 +36,7 @@ public class PatientServiceTest {
 
     //remove patient with id 1 from data.sql
     @Test
+    @Transactional
     public void removePatientCascadeTest() {
 
         Long patientId = 1L;
@@ -55,6 +57,7 @@ public class PatientServiceTest {
     }
 
     @Test
+    @Transactional
     public void findPatientByIdShouldReturnCorrectTO() {
         Long patientId = 1L;
 
