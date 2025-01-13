@@ -1,5 +1,8 @@
 package com.jpacourse.persistence.entity;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 import java.time.LocalDateTime;
 import java.util.List;
 import javax.persistence.*;
@@ -28,6 +31,7 @@ public class VisitEntity {
 	private PatientEntity patient;
 
 	// Relacja dwustronna z encją MedicalTreatment
+	@LazyCollection(LazyCollectionOption.FALSE)
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "visit")
 	private List<MedicalTreatmentEntity> medicalTreatment;
 

@@ -8,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.Query;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Repository
 public class PatientDaoImpl extends AbstractDao<PatientEntity, Long> implements PatientDao {
@@ -36,5 +38,29 @@ public class PatientDaoImpl extends AbstractDao<PatientEntity, Long> implements 
         visit.setPatient(patient);
 
         patient.getVisits().add(visit);
+    }
+
+    @Override
+    public List<PatientEntity> findPatientsByLastName(String lastName) {
+        String queryContent = "SELECT patient FROM PatientEntity patient WHERE patient.lastName = :lastName";
+        Query query = entityManager.createQuery(queryContent, PatientEntity.class);
+        query.setParameter("lastName", lastName);
+        return query.getResultList();
+    }
+
+    @Override
+    public List<PatientEntity> findPatientsWithVisitsAbove(Long threshold) {
+        String queryContent = "SELECT patient FROM PatientEntity patient WHERE SIZE(patient.visits) > :threshold";
+        Query query = entityManager.createQuery(queryContent, PatientEntity.class);
+        query.setParameter("threshold", threshold.intValue());
+        return query.getResultList();
+    }
+
+    @Override
+    public List<PatientEntity> findPatientsWithHeightAbove(Long height) {
+        String queryContent = "SELECT patient FROM PatientEntity patient WHERE patient.height > :height";
+        Query query = entityManager.createQuery(queryContent, PatientEntity.class);
+        query.setParameter("height", height);
+        return query.getResultList();
     }
 }

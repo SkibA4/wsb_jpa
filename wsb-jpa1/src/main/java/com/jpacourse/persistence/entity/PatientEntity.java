@@ -32,18 +32,26 @@ public class PatientEntity {
     @Column(nullable = false)
     private LocalDate dateOfBirth;
 
+    // Dodatkowe wybrane pole - wzrost (cm)
+    @Column(nullable = false)
+    private Long height;
+
     // Relacja dwustronna z encją Address
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "address_id", referencedColumnName = "id", nullable = false)
     private AddressEntity address;
 
     // Relacja dwustronna z encją Visit
-    @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<VisitEntity> visits;
 
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private Gender gender;
+
+    // Pole odpowiadające za wercjonowanie encji
+    @Version
+    private int version;
 
     public Long getId() {
         return id;
@@ -125,4 +133,11 @@ public class PatientEntity {
         this.gender = gender;
     }
 
+    public Long getHeight() {
+        return height;
+    }
+
+    public void setHeight(Long height) {
+        this.height = height;
+    }
 }
