@@ -22,6 +22,7 @@ public final class PatientMapper {
         patientTO.setDateOfBirth(patientEntity.getDateOfBirth());
         patientTO.setAddress(AddressMapper.mapToTO(patientEntity.getAddress()));
         patientTO.setGender(patientEntity.getGender());
+        patientTO.setHeight(patientEntity.getHeight());
 
         if (patientEntity.getVisits() != null) {
             patientTO.setVisits(patientEntity.getVisits()
@@ -47,6 +48,7 @@ public final class PatientMapper {
         patientEntity.setDateOfBirth(patientTO.getDateOfBirth());
         patientEntity.setAddress(AddressMapper.mapToEntity(patientTO.getAddress()));
         patientEntity.setGender(patientTO.getGender());
+        patientEntity.setHeight(patientTO.getHeight());
 
         if (patientTO.getVisits() != null) {
             patientEntity.setVisits(patientTO.getVisits()

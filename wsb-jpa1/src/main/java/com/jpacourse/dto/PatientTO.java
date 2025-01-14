@@ -27,6 +27,8 @@ public class PatientTO implements Serializable {
 
     private Gender gender;
 
+    private Long height;
+
     public Long getId() {
         return id;
     }
@@ -106,4 +108,8 @@ public class PatientTO implements Serializable {
     public void setGender(Gender gender) {
         this.gender = gender;
     }
+
+    public Long getHeight() { return height; }
+
+    public void setHeight(Long height) { this.height = height; }
 }

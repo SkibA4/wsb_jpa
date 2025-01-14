@@ -80,7 +80,7 @@ public class PatientServiceTest {
         assertThat(patientTO.getAddress().getPostalCode()).isEqualTo("00-001");
 
         assertThat(patientTO.getVisits()).isNotNull().isNotEmpty();
-        assertThat(patientTO.getVisits().size()).isEqualTo(1);
+        assertThat(patientTO.getVisits().size()).isEqualTo(4);
         VisitTO visitTO = patientTO.getVisits().get(0);
         assertThat(visitTO.getDescription()).isEqualTo("Checkup appointment");
         assertThat(visitTO.getTime()).isEqualTo(LocalDateTime.of(2024, 12, 5, 9, 30));
